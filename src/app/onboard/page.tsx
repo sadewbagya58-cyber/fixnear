@@ -26,10 +26,18 @@ export default function OnboardPage() {
     setLoading(true);
 
     try {
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user) {
+        router.push('/login');
+        return;
+      }
+
       const skillsArray = formData.skills.split(',').map(s => s.trim()).filter(s => s !== '');
       
       const { error } = await supabase.from('profiles').insert([
         {
+          id: user.id, // Link to Auth User
           full_name: formData.full_name,
           phone: formData.phone,
           whatsapp: formData.whatsapp || formData.phone,
@@ -45,7 +53,7 @@ export default function OnboardPage() {
 
       if (error) throw error;
       setSuccess(true);
-      setTimeout(() => router.push('/'), 3000);
+      setTimeout(() => router.push('/dashboard'), 2000); // Redirect to dashboard
     } catch (err) {
       console.error(err);
       alert('Error saving profile. Please try again.');
