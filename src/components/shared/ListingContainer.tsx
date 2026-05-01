@@ -80,7 +80,8 @@ export default function ListingContainer() {
                   key={p.id}
                   id={p.id}
                   name={p.full_name}
-                  role={p.category}
+                  category={p.category}
+                  userRole={p.role}
                   skills={p.skills}
                   location={p.city}
                   dist_meters={p.dist_meters}

@@ -54,9 +54,19 @@ export default async function DashboardPage() {
                       {profile.full_name.charAt(0)}
                     </div>
                     <div>
-                      <div className="flex items-center gap-2 mb-1">
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
                         <h2 className="text-2xl font-bold text-slate-900">{profile.full_name}</h2>
                         {profile.verified && <ShieldCheck className="w-5 h-5 text-blue-500 fill-blue-50" />}
+                        {profile.role === 'freelancer' && (
+                          <span className="px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700 uppercase tracking-wider border border-purple-200 shadow-sm">
+                            Verified Freelancer
+                          </span>
+                        )}
+                        {profile.role === 'buyer' && (
+                          <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700 uppercase tracking-wider border border-blue-200 shadow-sm">
+                            Buyer
+                          </span>
+                        )}
                       </div>
                       <p className="text-slate-500 font-medium capitalize">{profile.category} • {profile.experience_years} Years Exp.</p>
                       <div className="flex items-center gap-1 mt-2">
