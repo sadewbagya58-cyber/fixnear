@@ -89,6 +89,7 @@ export default function ListingContainer() {
                   experience={p.experience_years}
                   phone={p.phone}
                   whatsapp={p.whatsapp}
+                  price={p.price}
                 />
               ))}
             </div>

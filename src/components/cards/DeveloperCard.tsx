@@ -14,6 +14,7 @@ interface DeveloperCardProps {
   experience: number;
   phone: string;
   whatsapp: string;
+  price?: number;
   rating?: number; // Added rating
 }
 
@@ -28,6 +29,7 @@ export default function DeveloperCard({
   experience,
   phone,
   whatsapp,
+  price,
   rating = 4.8 // Default dummy rating
 }: DeveloperCardProps) {
   const whatsappUrl = `https://wa.me/${whatsapp}?text=${encodeURIComponent("Hi, I found you on AuraService. I need a website. Can we discuss?")}`;
@@ -83,6 +85,12 @@ export default function DeveloperCard({
           <ShieldCheck className="w-4 h-4" />
           <span>{experience || 0} years experience</span>
         </div>
+        {price !== undefined && price > 0 && (
+          <div className="flex items-center text-sm font-semibold text-slate-700 gap-2 mt-2">
+            <span className="text-emerald-600">LKR {price.toLocaleString()}</span>
+            <span className="text-slate-400 font-normal">per hour/project</span>
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-2 gap-3">
