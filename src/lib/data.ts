@@ -14,7 +14,7 @@ export async function getProviders(filters: ProviderFilters) {
   let supabaseQuery = supabase
     .from('profiles')
     .select('*')
-    .eq('is_provider', true);
+    .eq('role', 'freelancer');
 
   // Category/Role filter
   if (role && role !== 'all') {

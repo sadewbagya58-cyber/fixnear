@@ -2,6 +2,7 @@ import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import { ShieldCheck, MapPin, Star, Settings, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import DashboardProfileActions from '@/components/dashboard/DashboardProfileActions';
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -91,11 +92,7 @@ export default async function DashboardPage() {
                   </div>
                 </div>
 
-                <div className="mt-10 pt-8 border-t border-slate-100">
-                  <button className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-2xl transition-all shadow-xl shadow-slate-200">
-                    Edit Professional Profile
-                  </button>
-                </div>
+                <DashboardProfileActions profile={profile} />
               </div>
             </div>
           </div>
